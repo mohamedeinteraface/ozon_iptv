@@ -167,26 +167,31 @@ section { padding: 100px 5%; }
 .modal-box .wa-icon { font-size: 50px; margin-bottom: 15px; }
 .modal-box h3 { font-size: 24px; margin-bottom: 10px; }
 .modal-box p { color: var(--gray); font-size: 15px; margin-bottom: 25px; }
+
+/* BUTTON-STYLE WhatsApp options (fixed — no anchor tags blocking) */
 .wa-options { display: flex; flex-direction: column; gap: 15px; }
 .wa-option {
   display: flex; align-items: center; gap: 15px; padding: 16px 20px;
   background: linear-gradient(135deg, rgba(108,43,217,0.15), rgba(255,107,53,0.1));
   border: 1px solid rgba(108,43,217,0.3); border-radius: 15px;
-  text-decoration: none; color: white; transition: 0.3s;
+  color: white; transition: 0.2s; cursor: pointer; width: 100%;
+  font-family: 'Poppins', sans-serif; font-size: 15px; text-align: left;
+  -webkit-tap-highlight-color: transparent;
 }
-.wa-option:hover {
+.wa-option:hover, .wa-option:active {
   background: var(--gradient); border-color: transparent;
-  transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,107,53,0.4);
+  transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255,107,53,0.4);
 }
 .wa-option .num-icon {
   width: 45px; height: 45px; border-radius: 50%; background: #25d366;
   display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+  pointer-events: none;
 }
-.wa-option .num-info { text-align: left; flex: 1; }
+.wa-option .num-info { text-align: left; flex: 1; pointer-events: none; }
 .wa-option .num-info strong { display: block; font-size: 16px; }
 .wa-option .num-info span { font-size: 13px; color: var(--gray); }
 .wa-option:hover .num-info span { color: rgba(255,255,255,0.9); }
-.wa-option .arrow { font-size: 20px; }
+.wa-option .arrow { font-size: 20px; pointer-events: none; }
 
 /* Footer */
 footer { background: var(--darker); padding: 60px 5% 30px; border-top: 1px solid rgba(108,43,217,0.2); }
@@ -369,8 +374,8 @@ footer { background: var(--darker); padding: 60px 5% 30px; border-top: 1px solid
       <div class="contact-card">
         <div class="icon">📱</div>
         <h3>WhatsApp / Call</h3>
-        <a href="https://wa.me/212622970912">+212 622 970 912</a>
-        <a href="https://wa.me/212763605757">+212 763 605 757</a>
+        <a href="https://wa.me/212622970912" target="_blank" rel="noopener">+212 622 970 912</a>
+        <a href="https://wa.me/212763605757" target="_blank" rel="noopener">+212 763 605 757</a>
       </div>
       <div class="contact-card">
         <div class="icon">🕐</div>
@@ -382,7 +387,7 @@ footer { background: var(--darker); padding: 60px 5% 30px; border-top: 1px solid
         <div class="icon">💬</div>
         <h3>Free Trial</h3>
         <p style="color:var(--gray); margin-bottom:15px;">Try before you buy — 1-hour free trial available!</p>
-        <a href="https://wa.me/212622970912?text=Hi%2C%20I%20want%20a%201-hour%20free%20trial%20of%20OZON%20IPTV">Request Free Trial →</a>
+        <a href="https://wa.me/212622970912?text=Hi%2C%20I%20want%20a%201-hour%20free%20trial%20of%20OZON%20IPTV" target="_blank" rel="noopener">Request Free Trial →</a>
       </div>
     </div>
   </div>
@@ -404,8 +409,8 @@ footer { background: var(--darker); padding: 60px 5% 30px; border-top: 1px solid
     </div>
     <div class="footer-col">
       <h3>Contact Us</h3>
-      <a href="https://wa.me/212622970912">📞 +212 622 970 912</a>
-      <a href="https://wa.me/212763605757">📞 +212 763 605 757</a>
+      <a href="https://wa.me/212622970912" target="_blank" rel="noopener">📞 +212 622 970 912</a>
+      <a href="https://wa.me/212763605757" target="_blank" rel="noopener">📞 +212 763 605 757</a>
       <a href="#contact">Free Trial Available</a>
     </div>
   </div>
@@ -429,46 +434,38 @@ footer { background: var(--darker); padding: 60px 5% 30px; border-top: 1px solid
     <h3>Choose a Number to Contact</h3>
     <p id="modalPlanText">Select which WhatsApp number you'd like to order from:</p>
     <div class="wa-options">
-      <a href="#" id="waOption1" class="wa-option" target="_blank">
+      <button class="wa-option" onclick="goToWhatsApp('212622970912')">
         <div class="num-icon">📞</div>
         <div class="num-info">
           <strong>+212 622 970 912</strong>
           <span>WhatsApp Number 1</span>
         </div>
         <span class="arrow">→</span>
-      </a>
-      <a href="#" id="waOption2" class="wa-option" target="_blank">
+      </button>
+      <button class="wa-option" onclick="goToWhatsApp('212763605757')">
         <div class="num-icon">📞</div>
         <div class="num-info">
           <strong>+212 763 605 757</strong>
           <span>WhatsApp Number 2</span>
         </div>
         <span class="arrow">→</span>
-      </a>
+      </button>
     </div>
   </div>
 </div>
 
 <script>
-const NUM1 = '212622970912';
-const NUM2 = '212763605757';
+let currentPlan = '';
 
 function openWaModal(plan) {
+  currentPlan = plan || '';
   const modal = document.getElementById('waModal');
-  let msg = 'Hi OZON IPTV, I want to order';
-  if (plan) msg += ': ' + plan;
-  else msg += ' a subscription.';
-  msg += ' Please assist me.';
-
-  const encoded = encodeURIComponent(msg);
-  document.getElementById('waOption1').href = 'https://wa.me/' + NUM1 + '?text=' + encoded;
-  document.getElementById('waOption2').href = 'https://wa.me/' + NUM2 + '?text=' + encoded;
-
   const planText = document.getElementById('modalPlanText');
-  if (plan) {
-    planText.innerHTML = 'You selected: <strong style="color:var(--secondary);">' + plan + '</strong><br>Choose a WhatsApp number:';
+
+  if (currentPlan) {
+    planText.innerHTML = 'You selected: <strong style="color:var(--secondary);">' + currentPlan + '</strong><br>Choose a WhatsApp number:';
   } else {
-    planText.textContent = 'Select which WhatsApp number you\'d like to order from:';
+    planText.textContent = "Select which WhatsApp number you'd like to order from:";
   }
 
   modal.classList.add('active');
@@ -480,10 +477,26 @@ function closeWaModal() {
   document.body.style.overflow = '';
 }
 
+// ⚡ INSTANT WhatsApp redirect — opens immediately on click
+function goToWhatsApp(number) {
+  let msg = 'Hi OZON IPTV, I want to order';
+  if (currentPlan) msg += ': ' + currentPlan;
+  else msg += ' a subscription.';
+  msg += ' Please assist me.';
+
+  const url = 'https://wa.me/' + number + '?text=' + encodeURIComponent(msg);
+
+  // Close modal first, then redirect instantly
+  closeWaModal();
+
+  // Force open WhatsApp immediately (works on mobile + desktop)
+  window.open(url, '_blank');
+}
+
+// Close modal when clicking overlay or pressing Escape
 document.getElementById('waModal').addEventListener('click', (e) => {
   if (e.target.id === 'waModal') closeWaModal();
 });
-
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeWaModal();
 });
@@ -506,22 +519,4 @@ document.querySelector('.mobile-toggle').addEventListener('click', () => {
   }
 });
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) t.scrollIntoView({ behavior: 'smooth' });
-    const nav = document.querySelector('nav');
-    if (window.innerWidth < 900) nav.style.display = 'none';
-  });
-});
-
-// Header scroll
-window.addEventListener('scroll', () => {
-  const h = document.querySelector('header');
-  h.style.background = window.scrollY > 50 ? 'rgba(6,6,18,0.98)' : 'rgba(6,6,18,0.85)';
-});
-</script>
-</body>
-</html>
+//
