@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OZON IPTV - Premium Streaming Service | +212 622 970 912</title>
+<meta name="description" content="OZON IPTV - Premium IPTV service with 1,500+ international channels, 7,000+ movies & 5,000+ series. Contact us: +212 622 970 912 / +212 763 605 757">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+:root {
+  --primary: #6c2bd9;
+  --secondary: #ff6b35;
+  --dark: #0a0a1a;
+  --darker: #060612;
+  --light: #ffffff;
+  --gray: #b8b8d1;
+  --gradient: linear-gradient(135deg, #6c2bd9 0%, #ff6b35 100%);
+}
+body { background: var(--dark); color: var(--light); overflow-x: hidden; }
+
+/* Header */
+header {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  padding: 18px 5%; display: flex; justify-content: space-between; align-items: center;
+  background: rgba(6,6,18,0.85); backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(108,43,217,0.3); transition: 0.3s;
+}
+.logo { font-size: 28px; font-weight: 800; letter-spacing: 1px; }
+.logo span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav ul { display: flex; list-style: none; gap: 35px; }
+nav a { color: var(--light); text-decoration: none; font-weight: 500; transition: 0.3s; position: relative; }
+nav a:hover { color: var(--secondary); }
+nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gradient); transition: 0.3s; }
+nav a:hover::after { width: 100%; }
+.header-btn {
+  background: var(--gradient); padding: 10px 25px; border-radius: 30px;
+  color: white; text-decoration: none; font-weight: 600; transition: 0.3s; cursor: pointer;
+  box-shadow: 0 5px 20px rgba(108,43,217,0.4); border: none; font-size: 15px; font-family: 'Poppins', sans-serif;
+}
+.header-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,53,0.5); }
+.mobile-toggle { display: none; font-size: 28px; cursor: pointer; }
+
+/* Hero */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 120px 5% 60px; position: relative; overflow: hidden;
+  background: radial-gradient(circle at 20% 30%, rgba(108,43,217,0.25) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(255,107,53,0.2) 0%, transparent 50%);
+}
+.hero::before {
+  content: ''; position: absolute; width: 500px; height: 500px;
+  background: var(--primary); filter: blur(150px); opacity: 0.2; top: -100px; left: -100px; border-radius: 50%;
+}
+.hero-content { max-width: 1200px; text-align: center; position: relative; z-index: 2; }
+.hero h1 { font-size: 64px; font-weight: 800; line-height: 1.1; margin-bottom: 25px; }
+.hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { font-size: 20px; color: var(--gray); max-width: 750px; margin: 0 auto 40px; }
+.hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+.btn {
+  padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600;
+  font-size: 16px; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px;
+  cursor: pointer; border: none; font-family: 'Poppins', sans-serif;
+}
+.btn-primary { background: var(--gradient); color: white; box-shadow: 0 10px 30px rgba(108,43,217,0.5); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255,107,53,0.6); }
+.btn-outline { border: 2px solid var(--secondary); color: var(--secondary); background: transparent; }
+.btn-outline:hover { background: var(--secondary); color: white; }
+.hero-stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+.stat h3 { font-size: 42px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.stat p { color: var(--gray); font-size: 14px; }
+
+/* Section */
+section { padding: 100px 5%; }
+.section-title { text-align: center; margin-bottom: 60px; }
+.section-title h2 { font-size: 44px; font-weight: 800; margin-bottom: 15px; }
+.section-title h2 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-title p { color: var(--gray); font-size: 17px; max-width: 650px; margin: 0 auto; }
+
+/* Features */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.feature-card {
+  background: linear-gradient(145deg, rgba(108,43,217,0.08), rgba(255,107,53,0.05));
+  border: 1px solid rgba(108,43,217,0.2); border-radius: 20px; padding: 40px 30px;
+  transition: 0.4s; position: relative; overflow: hidden;
+}
+.feature-card:hover { transform: translateY(-10px); border-color: var(--secondary); box-shadow: 0 20px 40px rgba(108,43,217,0.3); }
+.feature-icon { font-size: 45px; margin-bottom: 20px; }
+.feature-card h3 { font-size: 22px; margin-bottom: 12px; }
+.feature-card p { color: var(--gray); font-size: 15px; line-height: 1.7; }
+
+/* Pricing */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.price-card {
+  background: linear-gradient(145deg, #12122a, #0a0a1a);
+  border: 1px solid rgba(108,43,217,0.3); border-radius: 24px; padding: 40px 30px;
+  text-align: center; transition: 0.4s; position: relative;
+}
+.price-card.popular { border: 2px solid var(--secondary); transform: scale(1.05); box-shadow: 0 20px 50px rgba(255,107,53,0.3); }
+.popular-badge {
+  position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+  background: var(--gradient); padding: 6px 20px; border-radius: 20px;
+  font-size: 12px; font-weight: 700; letter-spacing: 1px; white-space: nowrap;
+}
+.price-card:hover { transform: translateY(-8px); }
+.price-card.popular:hover { transform: scale(1.05) translateY(-8px); }
+.price-card h3 { font-size: 24px; margin-bottom: 10px; }
+.price-card .price { font-size: 48px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 20px 0; }
+.price-card .price small { font-size: 18px; color: var(--gray); -webkit-text-fill-color: var(--gray); }
+.price-card ul { list-style: none; margin: 25px 0; text-align: left; }
+.price-card ul li { padding: 10px 0; color: var(--gray); border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
+.price-card ul li::before { content: '✓'; color: var(--secondary); font-weight: 700; margin-right: 10px; }
+.price-card .btn { width: 100%; justify-content: center; margin-top: 10px; }
+
+/* Channels */
+.channels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.channel-box {
+  background: linear-gradient(145deg, rgba(108,43,217,0.1), rgba(255,107,53,0.05));
+  border: 1px solid rgba(108,43,217,0.2); border-radius: 15px; padding: 30px 15px;
+  text-align: center; font-weight: 600; transition: 0.3s;
+}
+.channel-box:hover { background: var(--gradient); transform: scale(1.05); border-color: transparent; }
+
+/* Contact */
+.contact { background: radial-gradient(circle at 50% 50%, rgba(108,43,217,0.15) 0%, transparent 70%); }
+.contact-container { max-width: 900px; margin: 0 auto; text-align: center; }
+.contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+.contact-card {
+  background: linear-gradient(145deg, #12122a, #0a0a1a);
+  border: 1px solid rgba(108,43,217,0.3); border-radius: 20px; padding: 40px 25px;
+  transition: 0.4s;
+}
+.contact-card:hover { border-color: var(--secondary); transform: translateY(-8px); }
+.contact-card .icon { font-size: 45px; margin-bottom: 20px; }
+.contact-card h3 { font-size: 20px; margin-bottom: 10px; }
+.contact-card a { color: var(--secondary); text-decoration: none; font-size: 20px; font-weight: 700; display: block; margin: 5px 0; transition: 0.3s; }
+.contact-card a:hover { color: var(--primary); }
+
+/* WhatsApp float */
+.whatsapp-float {
+  position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+  background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 32px; color: white; text-decoration: none; z-index: 999; cursor: pointer; border: none;
+  box-shadow: 0 10px 30px rgba(37,211,102,0.5); animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+/* WhatsApp Choice Modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
+}
+.modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-box {
+  background: linear-gradient(145deg, #1a1a35, #0e0e20);
+  border: 1px solid rgba(108,43,217,0.4); border-radius: 24px;
+  padding: 40px 30px; max-width: 460px; width: 100%; text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8); animation: slideUp 0.4s ease; position: relative;
+}
+@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-close {
+  position: absolute; top: 15px; right: 20px; background: none; border: none;
+  color: var(--gray); font-size: 28px; cursor: pointer; transition: 0.3s; line-height: 1;
+}
+.modal-close:hover { color: var(--secondary); transform: rotate(90deg); }
+.modal-box .wa-icon { font-size: 50px; margin-bottom: 15px; }
+.modal-box h3 { font-size: 24px; margin-bottom: 10px; }
+.modal-box p { color: var(--gray); font-size: 15px; margin-bottom: 25px; }
+.wa-options { display: flex; flex-direction: column; gap: 15px; }
+.wa-option {
+  display: flex; align-items: center; gap: 15px; padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(108,43,217,0.15), rgba(255,107,53,0.1));
+  border: 1px solid rgba(108,43,217,0.3); border-radius: 15px;
+  text-decoration: none; color: white; transition: 0.3s;
+}
+.wa-option:hover {
+  background: var(--gradient); border-color: transparent;
+  transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,107,53,0.4);
+}
+.wa-option .num-icon {
+  width: 45px; height: 45px; border-radius: 50%; background: #25d366;
+  display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+}
+.wa-option .num-info { text-align: left; flex: 1; }
+.wa-option .num-info strong { display: block; font-size: 16px; }
+.wa-option .num-info span { font-size: 13px; color: var(--gray); }
+.wa-option:hover .num-info span { color: rgba(255,255,255,0.9); }
+.wa-option .arrow { font-size: 20px; }
+
+/* Footer */
+footer { background: var(--darker); padding: 60px 5% 30px; border-top: 1px solid rgba(108,43,217,0.2); }
+.footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+.footer-col h3 { font-size: 22px; margin-bottom: 20px; }
+.footer-col h3 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.footer-col p, .footer-col a { color: var(--gray); font-size: 14px; text-decoration: none; display: block; margin: 10px 0; transition: 0.3s; }
+.footer-col a:hover { color: var(--secondary); }
+.footer-bottom { text-align: center; padding-top: 40px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--gray); font-size: 14px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero h1 { font-size: 42px; }
+  .hero p { font-size: 17px; }
+  nav ul { display: none; }
+  .header-btn { display: none; }
+  .mobile-toggle { display: block; }
+  .section-title h2 { font-size: 32px; }
+  .price-card.popular { transform: scale(1); }
+  .price-card.popular:hover { transform: translateY(-8px); }
+  .hero-stats { gap: 30px; }
+  .stat h3 { font-size: 32px; }
+  section { padding: 70px 5%; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">OZON <span>IPTV</span></div>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#channels">Channels</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="header-btn" onclick="openWaModal('')">Order Now</button>
+  <div class="mobile-toggle">☰</div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Premium IPTV Experience with <span>OZON IPTV</span></h1>
+    <p>Stream 1,500+ International Live Channels, 7,000+ Movies & 5,000+ Series in 4K/HD Quality. Instant Activation, Zero Buffering.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary" onclick="openWaModal('')">📱 Order via WhatsApp</button>
+      <a href="#pricing" class="btn btn-outline">View Plans →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><h3>1,500+</h3><p>International Channels</p></div>
+      <div class="stat"><h3>7K+</h3><p>Movies</p></div>
+      <div class="stat"><h3>5K+</h3><p>Series</p></div>
+      <div class="stat"><h3>4K</h3><p>Ultra HD Quality</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+  <div class="section-title">
+    <h2>Why Choose <span>OZON IPTV</span>?</h2>
+    <p>The best IPTV service with premium features and unmatched reliability</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📺</div>
+      <h3>1,500+ International Channels</h3>
+      <p>Access 1,500+ premium international channels including sports, movies, news, kids, and entertainment.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎬</div>
+      <h3>7,000+ Movies & 5,000+ Series</h3>
+      <p>Huge library of 7,000+ movies and 5,000+ series updated daily in multiple languages and resolutions.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Anti-Freeze Server</h3>
+      <p>Our advanced servers guarantee 99.9% uptime with zero buffering for a smooth experience.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>4K / FHD / HD</h3>
+      <p>Crystal-clear picture quality with support for 4K, Full HD and HD streaming.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <h3>Instant Activation</h3>
+      <p>Get your subscription activated within minutes after payment. No waiting!</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎧</div>
+      <h3>24/7 Support</h3>
+      <p>Our dedicated support team is available around the clock to help you with anything you need.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+  <div class="section-title">
+    <h2>Choose Your <span>Plan</span></h2>
+    <p>Flexible pricing in Moroccan Dirham (DH) — best value for long-term plans</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>6 Months</h3>
+      <div class="price">99.99 <small>DH</small></div>
+      <ul>
+        <li>1,500+ International Channels</li>
+        <li>7,000+ Movies & 5,000+ Series</li>
+        <li>4K / FHD / HD Quality</li>
+        <li>Anti-Freeze Server</li>
+        <li>24/7 Support</li>
+      </ul>
+      <button class="btn btn-outline" onclick="openWaModal('6 Months - 99.99 DH')">Order Now</button>
+    </div>
+    <div class="price-card popular">
+      <div class="popular-badge">BEST VALUE</div>
+      <h3>1 Year</h3>
+      <div class="price">179.99 <small>DH</small></div>
+      <ul>
+        <li>1,500+ International Channels</li>
+        <li>7,000+ Movies & 5,000+ Series</li>
+        <li>4K / FHD / HD Quality</li>
+        <li>Anti-Freeze Server</li>
+        <li>Priority 24/7 Support</li>
+      </ul>
+      <button class="btn btn-primary" onclick="openWaModal('1 Year - 179.99 DH')">Order Now</button>
+    </div>
+    <div class="price-card">
+      <h3>2 Years</h3>
+      <div class="price">299.99 <small>DH</small></div>
+      <ul>
+        <li>1,500+ International Channels</li>
+        <li>7,000+ Movies & 5,000+ Series</li>
+        <li>4K / FHD / HD Quality</li>
+        <li>Anti-Freeze Server</li>
+        <li>VIP 24/7 Support</li>
+      </ul>
+      <button class="btn btn-outline" onclick="openWaModal('2 Years - 299.99 DH')">Order Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Channels -->
+<section id="channels">
+  <div class="section-title">
+    <h2>Popular <span>Categories</span></h2>
+    <p>Everything you love to watch — all in one place</p>
+  </div>
+  <div class="channels-grid">
+    <div class="channel-box">⚽ Sports</div>
+    <div class="channel-box">🎬 Movies</div>
+    <div class="channel-box">📰 News</div>
+    <div class="channel-box">🧒 Kids</div>
+    <div class="channel-box">🎵 Music</div>
+    <div class="channel-box">🌍 International</div>
+    <div class="channel-box">📺 Entertainment</div>
+    <div class="channel-box">🔍 Documentaries</div>
+    <div class="channel-box">👨‍👩‍👧 Family</div>
+    <div class="channel-box">🎭 Series</div>
+    <div class="channel-box">🏆 PPV Events</div>
+    <div class="channel-box">➕ And More...</div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="contact-container">
+    <div class="section-title">
+      <h2>Contact <span>OZON IPTV</span></h2>
+      <p>Get in touch for orders, free trials, or any questions — we're available 24/7</p>
+    </div>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="icon">📱</div>
+        <h3>WhatsApp / Call</h3>
+        <a href="https://wa.me/212622970912">+212 622 970 912</a>
+        <a href="https://wa.me/212763605757">+212 763 605 757</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">🕐</div>
+        <h3>Support Hours</h3>
+        <p style="color:var(--gray);">24/7 Available</p>
+        <p style="color:var(--gray);">Fast Response Guaranteed</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">💬</div>
+        <h3>Free Trial</h3>
+        <p style="color:var(--gray); margin-bottom:15px;">Try before you buy — 1-hour free trial available!</p>
+        <a href="https://wa.me/212622970912?text=Hi%2C%20I%20want%20a%201-hour%20free%20trial%20of%20OZON%20IPTV">Request Free Trial →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-col">
+      <h3>OZON <span>IPTV</span></h3>
+      <p>Premium IPTV service with 1,500+ international channels, 7,000+ movies & 5,000+ series. Instant activation, 4K quality, and 24/7 support.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#channels">Channels</a>
+    </div>
+    <div class="footer-col">
+      <h3>Contact Us</h3>
+      <a href="https://wa.me/212622970912">📞 +212 622 970 912</a>
+      <a href="https://wa.me/212763605757">📞 +212 763 605 757</a>
+      <a href="#contact">Free Trial Available</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 OZON IPTV. All Rights Reserved. | Premium Streaming Service
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<button class="whatsapp-float" onclick="openWaModal('')" title="Chat on WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</button>
+
+<!-- WhatsApp Choice Modal -->
+<div class="modal-overlay" id="waModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeWaModal()">×</button>
+    <div class="wa-icon">💬</div>
+    <h3>Choose a Number to Contact</h3>
+    <p id="modalPlanText">Select which WhatsApp number you'd like to order from:</p>
+    <div class="wa-options">
+      <a href="#" id="waOption1" class="wa-option" target="_blank">
+        <div class="num-icon">📞</div>
+        <div class="num-info">
+          <strong>+212 622 970 912</strong>
+          <span>WhatsApp Number 1</span>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a href="#" id="waOption2" class="wa-option" target="_blank">
+        <div class="num-icon">📞</div>
+        <div class="num-info">
+          <strong>+212 763 605 757</strong>
+          <span>WhatsApp Number 2</span>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+const NUM1 = '212622970912';
+const NUM2 = '212763605757';
+
+function openWaModal(plan) {
+  const modal = document.getElementById('waModal');
+  let msg = 'Hi OZON IPTV, I want to order';
+  if (plan) msg += ': ' + plan;
+  else msg += ' a subscription.';
+  msg += ' Please assist me.';
+
+  const encoded = encodeURIComponent(msg);
+  document.getElementById('waOption1').href = 'https://wa.me/' + NUM1 + '?text=' + encoded;
+  document.getElementById('waOption2').href = 'https://wa.me/' + NUM2 + '?text=' + encoded;
+
+  const planText = document.getElementById('modalPlanText');
+  if (plan) {
+    planText.innerHTML = 'You selected: <strong style="color:var(--secondary);">' + plan + '</strong><br>Choose a WhatsApp number:';
+  } else {
+    planText.textContent = 'Select which WhatsApp number you\'d like to order from:';
+  }
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeWaModal() {
+  document.getElementById('waModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('waModal').addEventListener('click', (e) => {
+  if (e.target.id === 'waModal') closeWaModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeWaModal();
+});
+
+// Mobile nav toggle
+document.querySelector('.mobile-toggle').addEventListener('click', () => {
+  const nav = document.querySelector('nav');
+  if (nav.style.display === 'block') {
+    nav.style.display = 'none';
+  } else {
+    nav.style.display = 'block';
+    nav.style.position = 'absolute';
+    nav.style.top = '100%';
+    nav.style.left = '0';
+    nav.style.width = '100%';
+    nav.style.background = 'rgba(6,6,18,0.98)';
+    nav.style.padding = '20px';
+    nav.querySelector('ul').style.flexDirection = 'column';
+    nav.querySelector('ul').style.gap = '15px';
+  }
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+    const nav = document.querySelector('nav');
+    if (window.innerWidth < 900) nav.style.display = 'none';
+  });
+});
+
+// Header scroll
+window.addEventListener('scroll', () => {
+  const h = document.querySelector('header');
+  h.style.background = window.scrollY > 50 ? 'rgba(6,6,18,0.98)' : 'rgba(6,6,18,0.85)';
+});
+</script>
+</body>
+</html>
